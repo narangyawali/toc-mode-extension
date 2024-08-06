@@ -18,6 +18,12 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
+function RemoveToc(){
+
+	const tocContainer = document.querySelector(".toc-container");
+    document.body.removeChild(tocContainer);
+
+}
 
 // When the user clicks on the extension action
 chrome.action.onClicked.addListener(async (tab) => {
@@ -35,7 +41,11 @@ chrome.action.onClicked.addListener(async (tab) => {
 		await chrome.scripting.executeScript({
 			target:{tabId:tab.id},
 			files:["toc_script.js"]
-		})
+		});
+		await chrome.scripting.insertCSS({
+			target:{tabId:tab.id},
+			files:["toc_style.css"]
+		});
       // Insert the CSS file when the user turns the extension on
       // await chrome.scripting.insertCSS({
       //   files: ['focus-mode.css'],
@@ -43,6 +53,10 @@ chrome.action.onClicked.addListener(async (tab) => {
       // });
 
     } else if (nextState === 'OFF') {
+		await chrome.scripting.executeScript({
+			target:{tabId:tab.id},
+			func:RemoveToc,
+		}).then(()=>{console.log("toc removed")});
       // Remove the CSS file when the user turns the extension off
       // await chrome.scripting.removeCSS({
       //   files: ['focus-mode.css'],

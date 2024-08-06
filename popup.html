@@ -1,0 +1,31 @@
+<!-- just in case we want to have popup for our extension -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TOC Extension</title>
+    <style>
+        body {
+            width: 200px;
+            padding: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <button id="generate-toc">Generate TOC</button>
+    <script>
+        document.getElementById('generate-toc').addEventListener('click', () => {
+            chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+                chrome.scripting.executeScript({
+                    target: {tabId: tabs[0].id},
+                    files: ['content.js']
+                });
+            });
+        });
+    </script>
+</body>
+</html>
