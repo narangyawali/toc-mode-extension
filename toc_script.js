@@ -25,7 +25,8 @@ function AddToc (){
         }
         
         link.href = `#${heading.id}`;
-        link.textContent = heading.textContent;
+        link.textContent = `👉 ${heading.textContent}`;
+        // link.textContent = heading.textContent;
         
         // Indent h2 tags
         if (heading.tagName.toLowerCase() === 'h2') {
