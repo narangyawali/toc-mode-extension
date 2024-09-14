@@ -3,7 +3,7 @@
     position: fixed; /* Fixes the TOC on the right side */
     top: 5%; /* Adjust as needed */
     right: 10px; /* Adjust to the desired distance from the right edge */
-    width: 200px; /* Adjust the width as needed */
+    width: 300px; /* Adjust the width as needed */
 	height:90vh;
 	overflow:auto;
     padding: 10px;

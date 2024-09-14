@@ -14,7 +14,7 @@ function AddToc (){
     tocContainer.appendChild(tocList);
     
     // Collect h1 and h2 tags
-    const headings = document.querySelectorAll('h1, h2');
+    const headings = document.querySelectorAll('h1, h2','h3');
     headings.forEach((heading, index) => {
         const listItem = document.createElement('li');
         const link = document.createElement('a');
